@@ -309,7 +309,12 @@
   <div class="admin-banners-container">
     <div class="admin-header">
       <h1>Gestionar Banners</h1>
-      <button class="btn-new" id="btnNuevoBanner">+ Nuevo Banner</button>
+      <div style="display: flex; gap: 1rem;">
+        <button class="btn-new" id="btnNuevoBanner">+ Nuevo Banner</button>
+        <a href="/logout" onclick="return confirm('¿Estás seguro de que quieres cerrar la sesión?')" style="background: #FF6B6B; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s; white-space: nowrap;">
+          🚪 Logout
+        </a>
+      </div>
     </div>
 
     <% if (banners && banners.length > 0) { %>

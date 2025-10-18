@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rutas
+// Importar rutas y middleware
 const indexRoutes = require('./routes/index');
 const noticiasRoutes = require('./routes/noticias');
 const apiNoticiasRoutes = require('./routes/api-noticias');
@@ -24,10 +24,11 @@ const contactoRoutes = require('./routes/contacto');
 const serviciosRoutes = require('./routes/servicios');
 const sobreNosotrosRoutes = require('./routes/sobre-nosotros');
 const apiBannersRoutes = require('./routes/api-banners');
-const adminBannersRoutes = require('./routes/admin-banners');
+const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const checkAuth = require('./middleware/auth');
 
+// Rutas públicas
 app.use('/', indexRoutes);
 app.use('/noticias', noticiasRoutes);
 app.use('/api/noticias', apiNoticiasRoutes);
@@ -37,9 +38,8 @@ app.use('/api/sobre-nosotros', sobreNosotrosRoutes);
 app.use('/api/banners', apiBannersRoutes);
 app.use('/', authRoutes);
 
-// Rutas admin protegidas
-app.use('/admin', checkAuth);
-app.use('/admin/banners', adminBannersRoutes);
+// Aplicar middleware de autenticación ANTES de las rutas admin
+app.use('/admin', checkAuth, adminRoutes);
 
 // Iniciar servidor
 app.listen(PORT, () => {

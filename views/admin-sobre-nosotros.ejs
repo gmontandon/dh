@@ -75,7 +75,12 @@
   <%- include('partials/header') %>
   <main>
     <section class="admin-sobre-section">
-      <h1 style="font-size: 1.5rem; font-weight: 700; color: rgb(18, 21, 32); margin-bottom: 2rem;">Editar sección Sobre Nosotros</h1>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 1.5rem; font-weight: 700; color: rgb(18, 21, 32); margin: 0;">Editar sección Sobre Nosotros</h1>
+        <a href="/logout" onclick="return confirm('¿Estás seguro de que quieres cerrar la sesión?')" style="background: #FF6B6B; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s; white-space: nowrap;">
+          🚪 Logout
+        </a>
+      </div>
       <form id="sobre-form">
         <div class="form-group">
           <label for="titulo">Título</label>

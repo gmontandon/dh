@@ -2,9 +2,16 @@
   
   <main class="container">
     <section class="admin-section">
-      <div class="admin-header">
-        <h1>Administración de Servicios</h1>
-        <a href="/admin" class="btn-secondary">← Volver a Admin Principal</a>
+      <div class="admin-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1 style="margin: 0;">Administración de Servicios</h1>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <a href="/admin" class="btn-secondary">← Volver a Admin Principal</a>
+          <a href="/logout" onclick="return confirm('¿Estás seguro de que quieres cerrar la sesión?')" style="background: #FF6B6B; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s; white-space: nowrap;">
+            🚪 Logout
+          </a>
+        </div>
       </div>
 
       <div class="admin-content">

@@ -144,6 +144,31 @@
       filter: brightness(0) invert(1);
     }
     
+    /* Botón de Logout */
+    .logout-btn {
+      background: #FF6B6B;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: auto;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      height: auto;
+    }
+    
+    .logout-btn:hover {
+      background: #FF5252;
+    }
+    
+    .logout-btn:active {
+      background: #FF3838;
+    }
+    
     /* Hamburger Menu */
     .hamburger {
       display: none;
@@ -317,6 +342,11 @@
           <!-- Agrega aquí nuevas secciones fácilmente -->
         </ul>
       </nav>
+      
+      <!-- Botón de Logout (si estamos autenticado) -->
+      <% if (typeof currentPath !== 'undefined' && currentPath.includes('/admin')) { %>
+        <a href="/logout" class="logout-btn" onclick="return confirm('¿Estás seguro de que quieres cerrar la sesión?')">🚪 Logout</a>
+      <% } %>
     </div>
   </header>
   

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "banner-1",
+    "titulo": "Personas y sociedad",
+    "texto": "Promovemos una conducta comercial responsable, garantizamos que nuestro personal tenga un entorno laboral seguro y motivador, y trabajamos en conjunto con las comunidades.",
+    "imagen": "/img/sobre-nosotros.jpg",
+    "boton_url": "#personas-sociedad",
+    "boton_texto": "Ver más",
+    "color_fondo": "#26346e",
+    "color_texto": "#ffffff",
+    "paginas": [
+      "noticias"
+    ]
+  },
+  {
+    "id": "banner-1760807215848",
+    "titulo": "Proyectos",
+    "texto": "Tienes un nuevo proyecto del cual deberías utilizar logística, no dudes en comunicarte con nosotros.",
+    "imagen": "/img/noticia-default.jpg",
+    "boton_url": "contacto",
+    "boton_texto": "Ver más",
+    "color_fondo": "rgb(18, 21, 32)",
+    "color_texto": "#ffffff",
+    "paginas": [
+      "inicio"
+    ]
+  }
+]

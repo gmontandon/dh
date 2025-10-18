@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .admin-sobre-section {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 2.5rem 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      font-weight: 600;
+      color: rgb(18, 21, 32);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d0d0d0;
+      border-radius: 4px;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgb(18, 21, 32);
+      outline: none;
+    }
+    .form-group small {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .btn-primary {
+      background: rgb(18, 21, 32);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background: #0f1419;
+    }
+    .preview-img {
+      width: 100%;
+      max-width: 320px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #eee;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+  <main>
+    <section class="admin-sobre-section">
+      <h1 style="font-size: 1.5rem; font-weight: 700; color: rgb(18, 21, 32); margin-bottom: 2rem;">Editar sección Sobre Nosotros</h1>
+      <form id="sobre-form">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" name="titulo" value="<%= sobre.titulo %>" required>
+        </div>
+        <div class="form-group">
+          <label for="texto">Texto</label>
+          <textarea id="texto" name="texto" rows="6" required><%= sobre.texto %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="imagen">URL de la imagen</label>
+          <input type="text" id="imagen" name="imagen" value="<%= sobre.imagen %>" placeholder="/img/sobre-nosotros.jpg">
+          <small>Sube la imagen a <b>public/img/</b> y coloca la ruta aquí. Ejemplo: /img/sobre-nosotros.jpg</small>
+        </div>
+        <div class="form-group">
+          <img src="<%= sobre.imagen %>" alt="Preview" class="preview-img" onerror="this.src='/img/sobre-nosotros.jpg'">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Guardar cambios</button>
+        </div>
+      </form>
+      <div id="resultado" style="margin-top:1rem;"></div>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
+  <script>
+    document.getElementById('sobre-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const titulo = document.getElementById('titulo').value;
+      const texto = document.getElementById('texto').value;
+      const imagen = document.getElementById('imagen').value;
+      try {
+        const res = await fetch('/api/sobre-nosotros', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ titulo, texto, imagen })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('resultado').innerHTML = '<span style="color:#28a745;font-weight:600;">Guardado correctamente</span>';
+        } else {
+          document.getElementById('resultado').innerHTML = '<span style="color:#dc3545;font-weight:600;">Error al guardar</span>';
+        }
+      } catch {
+        document.getElementById('resultado').innerHTML = '<span style="color:#dc3545;font-weight:600;">Error de conexión</span>';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+[
+  {
+    "id": 2,
+    "titulo": "Dunning",
+    "descripcionCorta": "Transporte especial",
+    "descripcionLarga": "Especializada en fletes pesados",
+    "imagen": "/img/servicio-test-1.png",
+    "caracteristicas": [
+      "Especializada en fletes pesados"
+    ],
+    "fecha": "2024-01-15"
+  },
+  {
+    "id": 3,
+    "titulo": "Monte Noble",
+    "descripcionCorta": "Servicios Forestales",
+    "descripcionLarga": "Maquinaria diversa",
+    "imagen": "/img/servicio-test-2.png",
+    "caracteristicas": [
+      "Cosecha Forestal",
+      "Movimiento de tierras",
+      "Infraestructura"
+    ],
+    "fecha": "2024-01-15"
+  },
+  {
+    "id": 4,
+    "titulo": "David Henderson",
+    "descripcionCorta": "Agricultura",
+    "descripcionLarga": "2.000 hectáreas (800 ganadería, 1.200 agricultura)",
+    "imagen": "/img/servicio-test-3.png",
+    "caracteristicas": [
+      "Agricultura",
+      "Ganadería",
+      "Riego"
+    ],
+    "fecha": "2025-10-18"
+  },
+  {
+    "id": 5,
+    "titulo": "Oldson",
+    "descripcionCorta": "Transporte Forestal",
+    "descripcionLarga": "30+ máquinas, 60+ empleados",
+    "imagen": "/img/servicio-test-4.png",
+    "caracteristicas": [
+      "Logística forestal",
+      "Residuos industriales"
+    ],
+    "fecha": "2025-10-18"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "titulo": "Sobre Nosotros",
+  "texto": "Somos una empresa líder en el sector forestal y logístico, comprometida con la innovación, la sostenibilidad y el desarrollo de nuestros clientes. Nuestro equipo está formado por profesionales apasionados que buscan superar las expectativas en cada proyecto.",
+  "imagen": "/img/sobre-nosotros.jpg",
+  "mision": [
+    "Brindar servicios forestales y logísticos diferenciados, adaptados a las necesidades de cada cliente.",
+    "Apoyar el crecimiento y desempeño de nuestros clientes en sus mercados.",
+    "Ofrecer soluciones creativas y personalizadas, buscando siempre la excelencia.",
+    "Fomentar el trabajo en equipo y el desarrollo profesional dentro de la empresa."
+  ],
+  "vision": [
+    "Ser reconocidos nacional e internacionalmente por nuestro compromiso con la calidad y la responsabilidad.",
+    "Impulsar el desarrollo sostenible en el sector forestal y logístico.",
+    "Crear alianzas estratégicas que potencien el crecimiento de nuestros clientes y colaboradores.",
+    "Ser un referente en innovación y buenas prácticas empresariales."
+  ]
+}

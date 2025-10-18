@@ -1,0 +1,197 @@
+<%- include('partials/header') %>
+  
+  <main class="container">
+    <section class="admin-section">
+      <div class="admin-header">
+        <h1>Administración de Servicios</h1>
+        <a href="/admin" class="btn-secondary">← Volver a Admin Principal</a>
+      </div>
+
+      <div class="admin-content">
+        <!-- Formulario para agregar/editar servicio -->
+        <div class="admin-form">
+          <h2 id="form-title">Agregar Nuevo Servicio</h2>
+          <form id="servicio-form">
+            <input type="hidden" id="servicio-id">
+            
+            <div class="form-group">
+              <label for="titulo">Título del Servicio *</label>
+              <input type="text" id="titulo" name="titulo" required>
+            </div>
+
+            <div class="form-group">
+              <label for="descripcionCorta">Descripción Corta *</label>
+              <textarea id="descripcionCorta" name="descripcionCorta" rows="2" required placeholder="Breve resumen del servicio"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="descripcionLarga">Descripción Completa *</label>
+              <textarea id="descripcionLarga" name="descripcionLarga" rows="6" required placeholder="Descripción detallada del servicio"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="imagen">URL de la Imagen</label>
+              <input type="text" id="imagen" name="imagen" placeholder="/img/servicio-ejemplo.jpg">
+              <small>Sube la imagen a public/img/ y escribe la ruta: /img/nombre-imagen.jpg</small>
+            </div>
+
+            <div class="form-group">
+              <label for="caracteristicas">Características (una por línea)</label>
+              <textarea id="caracteristicas" name="caracteristicas" rows="5" placeholder="Característica 1&#10;Característica 2&#10;Característica 3"></textarea>
+              <small>Escribe cada característica en una línea nueva</small>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="submit-btn">Agregar Servicio</button>
+              <button type="button" class="btn-secondary" id="cancel-btn" style="display: none;">Cancelar</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Lista de servicios -->
+        <div class="admin-list">
+          <h2>Servicios Existentes</h2>
+          <div id="servicios-list">
+            <% if (servicios && servicios.length > 0) { %>
+              <% servicios.forEach(servicio => { %>
+                <div class="item-card" data-id="<%= servicio.id %>">
+                  <div class="item-content">
+                    <h3><%= servicio.titulo %></h3>
+                    <p class="item-descripcion"><%= servicio.descripcionCorta %></p>
+                    <% if (servicio.caracteristicas && servicio.caracteristicas.length > 0) { %>
+                      <div class="item-caracteristicas">
+                        <strong>Características:</strong>
+                        <ul>
+                          <% servicio.caracteristicas.slice(0, 3).forEach(car => { %>
+                            <li><%= car %></li>
+                          <% }); %>
+                        </ul>
+                      </div>
+                    <% } %>
+                    <small class="item-fecha">Creado: <%= servicio.fecha %></small>
+                  </div>
+                  <div class="item-actions">
+                    <button onclick="editarServicio(<%= servicio.id %>)" class="btn-edit">Editar</button>
+                    <button onclick="eliminarServicio(<%= servicio.id %>)" class="btn-delete">Eliminar</button>
+                    <a href="/servicios/<%= servicio.id %>" target="_blank" class="btn-view">Ver</a>
+                  </div>
+                </div>
+              <% }); %>
+            <% } else { %>
+              <p class="no-items">No hay servicios registrados aún.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    let editandoId = null;
+
+    // Manejar envío del formulario
+    document.getElementById('servicio-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const caracteristicasText = document.getElementById('caracteristicas').value;
+      const caracteristicas = caracteristicasText
+        .split('\n')
+        .map(c => c.trim())
+        .filter(c => c.length > 0);
+
+      const servicio = {
+        titulo: document.getElementById('titulo').value,
+        descripcionCorta: document.getElementById('descripcionCorta').value,
+        descripcionLarga: document.getElementById('descripcionLarga').value,
+        imagen: document.getElementById('imagen').value || '/img/servicio-default.jpg',
+        caracteristicas: caracteristicas
+      };
+
+      try {
+        let response;
+        if (editandoId) {
+          response = await fetch(`/api/servicios/${editandoId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(servicio)
+          });
+        } else {
+          response = await fetch('/api/servicios', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(servicio)
+          });
+        }
+
+        if (response.ok) {
+          alert(editandoId ? 'Servicio actualizado correctamente' : 'Servicio creado correctamente');
+          location.reload();
+        } else {
+          alert('Error al guardar el servicio');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al comunicarse con el servidor');
+      }
+    });
+
+    // Editar servicio
+    async function editarServicio(id) {
+      try {
+        const response = await fetch(`/api/servicios/json/${id}`);
+        const servicio = await response.json();
+
+        document.getElementById('servicio-id').value = servicio.id;
+        document.getElementById('titulo').value = servicio.titulo;
+        document.getElementById('descripcionCorta').value = servicio.descripcionCorta;
+        document.getElementById('descripcionLarga').value = servicio.descripcionLarga;
+        document.getElementById('imagen').value = servicio.imagen;
+        document.getElementById('caracteristicas').value = servicio.caracteristicas ? servicio.caracteristicas.join('\n') : '';
+
+        document.getElementById('form-title').textContent = 'Editar Servicio';
+        document.getElementById('submit-btn').textContent = 'Actualizar Servicio';
+        document.getElementById('cancel-btn').style.display = 'inline-block';
+
+        editandoId = id;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al cargar el servicio');
+      }
+    }
+
+    // Cancelar edición
+    document.getElementById('cancel-btn').addEventListener('click', () => {
+      document.getElementById('servicio-form').reset();
+      document.getElementById('form-title').textContent = 'Agregar Nuevo Servicio';
+      document.getElementById('submit-btn').textContent = 'Agregar Servicio';
+      document.getElementById('cancel-btn').style.display = 'none';
+      editandoId = null;
+    });
+
+    // Eliminar servicio
+    async function eliminarServicio(id) {
+      if (!confirm('¿Estás seguro de que deseas eliminar este servicio?')) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/servicios/${id}`, {
+          method: 'DELETE'
+        });
+
+        if (response.ok) {
+          alert('Servicio eliminado correctamente');
+          location.reload();
+        } else {
+          alert('Error al eliminar el servicio');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al comunicarse con el servidor');
+      }
+    }
+  </script>
+

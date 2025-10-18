@@ -1,0 +1,88 @@
+<style>
+  .two-column-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 200px;
+    margin: 0;
+    margin-bottom: 4rem;
+  }
+  .column-image {
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+  }
+  .column-content {
+    background: rgb(18, 21, 32);
+    color: #fff;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .column-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .column-text {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .column-btn {
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+  .column-btn a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    background: transparent;
+  }
+  .column-btn a:hover {
+    background: #fff;
+    color: rgb(18, 21, 32);
+    border-color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .two-column-section {
+      grid-template-columns: 1fr;
+    }
+    .column-image {
+      min-height: 400px;
+    }
+    .column-content {
+      padding: 3rem 2rem;
+    }
+    .column-title {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<% if (typeof banners !== 'undefined' && banners && banners.length > 0) { %>
+  <% banners.forEach(banner => { %>
+    <section class="two-column-section" id="<%= banner.id %>">
+      <div class="column-image" style="background-image: url('<%= banner.imagen %>');"></div>
+      <div class="column-content" style="background: <%= banner.color_fondo || 'rgb(18, 21, 32)' %>; color: <%= banner.color_texto || '#fff' %>;">
+        <div>
+          <h2 class="column-title" style="color: <%= banner.color_texto || '#fff' %>;"><%= banner.titulo %></h2>
+          <p class="column-text" style="color: <%= banner.color_texto || 'rgba(255,255,255,0.92)' %>;"><%= banner.texto %></p>
+        </div>
+        <div class="column-btn">
+          <a href="<%= banner.boton_url %>" style="border-color: <%= banner.color_texto || '#fff' %>; color: <%= banner.color_texto || '#fff' %>;" onmouseover="this.style.background = '<%= banner.color_texto || '#fff' %>'; this.style.color = '<%= banner.color_fondo || 'rgb(18, 21, 32)' %>';" onmouseout="this.style.background = 'transparent'; this.style.color = '<%= banner.color_texto || '#fff' %>';"><%= banner.boton_texto %></a>
+        </div>
+      </div>
+    </section>
+  <% }); %>
+<% } %>

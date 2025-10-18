@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .servicios-header {
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+    .servicios-header h1 {
+      font-size: 48px;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #1a1a1a;
+      text-align: left;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .servicios-header p {
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin-bottom: 20px;
+      max-width: 600px;
+      white-space: normal;
+      word-break: break-words;
+    }
+
+    p.servicios-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: #666;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .servicio-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      transition: transform 0.3s;
+      cursor: pointer;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+      text-decoration: none;
+    }
+
+    .servicio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    .servicio-card:hover {
+      transform: none;
+    }
+
+    .servicio-card:hover .servicio-btn-circular {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Contenedor de título arriba a la izquierda */
+    .servicio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 0.08rem;
+    }
+
+    .servicio-titulo-top {
+      flex: 1;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 0.2rem 0;
+      text-decoration: none;
+    }
+
+    /* Botón circular a la derecha arriba */
+    .servicio-btn-circular {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgb(18, 21, 32);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .servicio-btn-circular:hover {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Descripción abajo a la izquierda */
+    .servicio-footer {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .servicio-descripcion {
+      color: #333;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      max-width: 100%;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .no-servicios {
+      text-align: center;
+      padding: 3rem;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .servicios-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .servicio-titulo-top {
+        font-size: 1rem;
+      }
+
+      .servicio-descripcion {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Sección de Estadísticas */
+    .stats-section {
+      background: #fff;
+      padding: 4rem 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 2rem 1rem;
+    }
+
+    .stat-item:not(:last-child) {
+      border-right: 1px solid #d0d0d0;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgb(18, 21, 32);
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: #666;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item:nth-child(odd) {
+        border-right: 1px solid #d0d0d0;
+      }
+
+      .stat-item:nth-child(even) {
+        border-right: none;
+      }
+
+      .stat-item:nth-child(3),
+      .stat-item:nth-child(4) {
+        border-right: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-item {
+        border-right: none !important;
+        border-bottom: 1px solid #d0d0d0;
+        padding-bottom: 2rem;
+      }
+
+      .stat-item:last-child {
+        border-bottom: none;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="container" style="flex: 1; padding-top: 120px; padding-bottom: 60px;">
+    <section style="padding: 2rem 0;">
+      <div class="servicios-header">
+        <h1>Nuestros Servicios</h1>
+        <p class="servicios-subtitle">Soluciones profesionales adaptadas a tus necesidades</p>
+      </div>
+
+      <% if (servicios && servicios.length > 0) { %>
+        <div class="servicios-grid">
+          <% servicios.forEach(servicio => { %>
+            <a href="/servicios/<%= servicio.id %>" class="servicio-card" style="background-image: url('<%= servicio.imagen %>'); background-size: cover; background-position: center;">
+              <div class="servicio-header">
+                <div style="flex: 1;">
+                  <h2 class="servicio-titulo-top"><%= servicio.titulo %></h2>
+                  <p class="servicio-descripcion"><%= servicio.descripcionCorta %></p>
+                </div>
+                <div class="servicio-btn-circular" title="Ver servicio">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="5" x2="5" y2="19"></line>
+                    <polyline points="12 5 19 5 19 12"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="servicio-footer">
+              </div>
+            </a>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <div class="no-servicios">
+          <p>No hay servicios disponibles en este momento.</p>
+        </div>
+      <% } %>
+
+      <!-- Sección de Estadísticas -->
+      <section class="stats-section">
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Proyectos Completados Mundialmente</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Tasa de Satisfacción de Clientes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">190</div>
+            <div class="stat-label">Países Atendidos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Años de Experiencia</div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <%- include('partials/banners', { banners: banners || [] }) %>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
+

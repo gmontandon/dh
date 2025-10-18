@@ -1,0 +1,18 @@
+{
+  "name": "portal-dh",
+  "version": "1.0.0",
+  "description": "Portal web dinámico para David Henderson Grupo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["express", "nodejs", "web", "portal"],
+  "author": "David Henderson Grupo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "body-parser": "^1.20.2"
+  }
+}

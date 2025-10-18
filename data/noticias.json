@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1760747368520,
+    "titulo": "Test",
+    "categoria": "General",
+    "contenido": "<p class=\"whitespace-normal break-words\"><strong>La industria se adapta a normativas m&aacute;s estrictas para el movimiento de carga maderera</strong></p>\n<p class=\"whitespace-normal break-words\">La Secretar&iacute;a de Transporte implement&oacute; a partir de este mes nuevas regulaciones para el transporte de productos forestales, estableciendo est&aacute;ndares m&aacute;s rigurosos de seguridad vial y control ambiental. Las medidas buscan optimizar la log&iacute;stica de carga y reducir los impactos negativos en las carreteras y ecosistemas.</p>\n<p class=\"whitespace-normal break-words\">Entre los cambios m&aacute;s significativos se encuentran la obligatoriedad de sistemas de rastreo GPS en tiempo real para todos los veh&iacute;culos dedicados al transporte de madera, as&iacute; como la revisi&oacute;n t&eacute;cnica bimestral m&aacute;s exhaustiva. Adem&aacute;s, se establecieron rutas espec&iacute;ficas para el movimiento de carga pesada, evitando pasos por zonas urbanas durante horas pico.</p>\n<p class=\"whitespace-normal break-words\">\"Estas regulaciones representan un equilibrio entre la viabilidad econ&oacute;mica de la industria forestal y la responsabilidad ambiental y social\", se&ntilde;al&oacute; el director del organismo regulador. Las empresas del sector tendr&aacute;n un periodo de transici&oacute;n de 90 d&iacute;as para adaptarse completamente a los nuevos requisitos.</p>\n<p class=\"whitespace-normal break-words\">La medida ha generado reacciones mixtas entre los transportistas. Mientras algunos ven positivamente la estandarizaci&oacute;n, otros expresan preocupaci&oacute;n por los costos de implementaci&oacute;n. Las c&aacute;maras empresariales ya iniciaron di&aacute;logos con las autoridades para evaluar posibles subsidios y facilidades.</p>",
+    "imagen": "/img/noticia-default.jpg",
+    "fecha": "2025-10-18T00:29:28.520Z"
+  },
+  {
+    "id": 1760747382680,
+    "titulo": "Nuevas Regulaciones de Transporte Forestal",
+    "categoria": "Forestal",
+    "contenido": "<p class=\"whitespace-normal break-words\"><strong>La industria se adapta a normativas m&aacute;s estrictas para el movimiento de carga maderera</strong></p>\n<p class=\"whitespace-normal break-words\">La Secretar&iacute;a de Transporte implement&oacute; a partir de este mes nuevas regulaciones para el transporte de productos forestales, estableciendo est&aacute;ndares m&aacute;s rigurosos de seguridad vial y control ambiental. Las medidas buscan optimizar la log&iacute;stica de carga y reducir los impactos negativos en las carreteras y ecosistemas.</p>\n<p class=\"whitespace-normal break-words\">Entre los cambios m&aacute;s significativos se encuentran la obligatoriedad de sistemas de rastreo GPS en tiempo real para todos los veh&iacute;culos dedicados al transporte de madera, as&iacute; como la revisi&oacute;n t&eacute;cnica bimestral m&aacute;s exhaustiva. Adem&aacute;s, se establecieron rutas espec&iacute;ficas para el movimiento de carga pesada, evitando pasos por zonas urbanas durante horas pico.</p>\n<p class=\"whitespace-normal break-words\">\"Estas regulaciones representan un equilibrio entre la viabilidad econ&oacute;mica de la industria forestal y la responsabilidad ambiental y social\", se&ntilde;al&oacute; el director del organismo regulador. Las empresas del sector tendr&aacute;n un periodo de transici&oacute;n de 90 d&iacute;as para adaptarse completamente a los nuevos requisitos.</p>\n<p class=\"whitespace-normal break-words\">La medida ha generado reacciones mixtas entre los transportistas. Mientras algunos ven positivamente la estandarizaci&oacute;n, otros expresan preocupaci&oacute;n por los costos de implementaci&oacute;n. Las c&aacute;maras empresariales ya iniciaron di&aacute;logos con las autoridades para evaluar posibles subsidios y facilidades.</p>",
+    "imagen": "/img/servicio-finanzas.jpg",
+    "fecha": "2025-10-18T00:29:42.680Z",
+    "subtitulo": "La industria se adapta a normativas más estrictas para el movimiento de carga maderera"
+  },
+  {
+    "id": 1760798238462,
+    "titulo": "Prueba",
+    "categoria": "General",
+    "contenido": "<p>Te<strong>st</strong></p>",
+    "imagen": "/img/noticia-default.jpg",
+    "fecha": "2025-10-18T14:37:18.462Z"
+  },
+  {
+    "id": 1760798700969,
+    "titulo": "Prueba 5",
+    "categoria": "Noticias",
+    "contenido": "<p>asdas a<strong>sda as das as</strong>d a as asd asd asd&nbsp;</p>",
+    "imagen": "/img/sobre-nosotros.jpg",
+    "fecha": "2025-10-18T14:45:00.969Z"
+  }
+]

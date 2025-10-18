@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .servicio-detalle {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .servicio-hero {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .servicio-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .servicio-hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 2rem;
+      color: #fff;
+    }
+
+    .servicio-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .servicio-contenido {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .servicio-descripcion {
+      color: #333;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .servicio-caracteristicas {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      border-left: 4px solid rgb(18, 21, 32);
+    }
+
+    .servicio-caracteristicas h2 {
+      color: rgb(18, 21, 32);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .caracteristicas-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .caracteristicas-lista li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #e0e0e0;
+      color: #555;
+      display: flex;
+      align-items: center;
+    }
+
+    .caracteristicas-lista li:last-child {
+      border-bottom: none;
+    }
+
+    .caracteristicas-lista li:before {
+      content: "✓";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: rgb(18, 21, 32);
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .servicio-acciones {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.875rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: rgb(18, 21, 32);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0f1419;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: rgb(18, 21, 32);
+      border: 2px solid rgb(18, 21, 32);
+    }
+
+    .btn-secondary:hover {
+      background: rgb(18, 21, 32);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .servicio-hero {
+        height: 300px;
+      }
+
+      .servicio-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .servicio-contenido {
+        padding: 1.5rem;
+      }
+
+      .servicio-acciones {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="container">
+    <div class="servicio-detalle">
+      <!-- Imagen destacada con título -->
+      <div class="servicio-hero">
+        <img src="<%= servicio.imagen %>" alt="<%= servicio.titulo %>" onerror="this.src='/img/servicio-default.jpg'">
+        <div class="servicio-hero-overlay">
+          <h1><%= servicio.titulo %></h1>
+        </div>
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="servicio-contenido">
+        <p class="servicio-descripcion"><%= servicio.descripcionLarga %></p>
+
+        <% if (servicio.caracteristicas && servicio.caracteristicas.length > 0) { %>
+          <div class="servicio-caracteristicas">
+            <h2>Características del Servicio</h2>
+            <ul class="caracteristicas-lista">
+              <% servicio.caracteristicas.forEach(caracteristica => { %>
+                <li><%= caracteristica %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Acciones -->
+        <div class="servicio-acciones">
+          <a href="/contacto" class="btn btn-primary">Solicitar Información</a>
+          <a href="/servicios" class="btn btn-secondary">← Ver Todos los Servicios</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

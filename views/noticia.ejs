@@ -1,0 +1,347 @@
+<%- include('partials/header') %>
+
+<style>
+  /* Estilos globales del párrafo de texto - solo para noticias */
+  .noticia-body p,
+  .noticia-hero p {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin-bottom: 20px;
+  }
+
+  /* Hero Section con Imagen de Fondo */
+  .noticia-hero {
+    position: relative;
+    height: 65vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .noticia-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .noticia-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    max-width: 900px;
+    width: 100%;
+    padding: 3.5rem 2rem;
+    background: #fff;
+    backdrop-filter: none;
+  }
+
+  .noticia-hero h1 {
+    font-size: 48px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p.subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .noticia-hero-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .noticia-category-badge {
+    background: rgb(18, 21, 32);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .noticia-date {
+    color: #333;
+    font-size: 0.95rem;
+  }
+
+  /* Contenido Principal */
+  .noticia-main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background: #fff;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Estilos para contenido generado por TinyMCE */
+  .noticia-body {
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  .noticia-body p {
+    margin-bottom: 20px;
+  }
+
+  .noticia-body strong {
+    font-weight: 700;
+    color: rgb(18, 21, 32);
+  }
+
+  .noticia-body em {
+    font-style: italic;
+  }
+
+  .noticia-body a {
+    color: rgb(18, 21, 32);
+    text-decoration: underline;
+  }
+
+  .noticia-body a:hover {
+    color: #0f3220;
+  }
+
+  .noticia-body ul,
+  .noticia-body ol {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .noticia-body li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Sección de Compartir */
+  .share-section {
+    background: #f6f7f8;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .share-section h3 {
+    color: #222;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+    color: #fff;
+  }
+
+  .share-whatsapp {
+    background: #25D366;
+  }
+
+  .share-whatsapp:hover {
+    background: #1BA85D;
+    transform: translateY(-2px);
+  }
+
+  .share-linkedin {
+    background: #0A66C2;
+  }
+
+  .share-linkedin:hover {
+    background: #084a8f;
+    transform: translateY(-2px);
+  }
+
+  .share-facebook {
+    background: #1877F2;
+  }
+
+  .share-facebook:hover {
+    background: #0A66C2;
+    transform: translateY(-2px);
+  }
+
+  .share-twitter {
+    background: #1DA1F2;
+  }
+
+  .share-twitter:hover {
+    background: #1a8cd8;
+    transform: translateY(-2px);
+  }
+
+  .share-email {
+    background: #666;
+  }
+
+  .share-email:hover {
+    background: #555;
+    transform: translateY(-2px);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: rgb(18, 21, 32);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .back-link:hover {
+    color: #0f3220;
+  }
+
+  @media (max-width: 768px) {
+    .noticia-hero {
+      height: 50vh;
+    }
+
+    .noticia-hero-content {
+      padding: 2rem 1rem;
+    }
+
+    .noticia-hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .noticia-hero-meta {
+      gap: 0.75rem;
+      flex-direction: column;
+    }
+
+    .noticia-main-container {
+      margin: -40px 1rem 0;
+      padding: 2rem 1rem;
+    }
+
+    .noticia-body {
+      font-size: 1rem;
+    }
+
+    .share-buttons {
+      gap: 0.5rem;
+    }
+
+    .share-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+<main style="padding-top: 80px; background: #fff; min-height: 100vh;">
+  <!-- Hero Section con imagen de fondo -->
+  <% if (noticia.imagen) { %>
+    <div class="noticia-hero" style="background-image: url('<%= noticia.imagen %>'); background-attachment: fixed;">
+      <div class="noticia-hero-content">
+        <h1><%= noticia.titulo %></h1>
+        <% if (noticia.subtitulo) { %>
+          <p class="subtitle"><%= noticia.subtitulo %></p>
+        <% } %>
+        <div class="noticia-hero-meta">
+          <span class="noticia-category-badge"><%= noticia.categoria || 'General' %></span>
+          <span class="noticia-date"><%= new Date(noticia.fecha).toLocaleDateString('es-UY') %></span>
+        </div>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="noticia-hero" style="background: linear-gradient(135deg, rgb(18, 21, 32) 0%, #0f3220 100%);">
+      <div class="noticia-hero-content">
+        <h1><%= noticia.titulo %></h1>
+        <% if (noticia.subtitulo) { %>
+          <p class="subtitle"><%= noticia.subtitulo %></p>
+        <% } %>
+        <div class="noticia-hero-meta">
+          <span class="noticia-category-badge"><%= noticia.categoria || 'General' %></span>
+          <span class="noticia-date"><%= new Date(noticia.fecha).toLocaleDateString('es-UY') %></span>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- Contenido Principal - Contenedor Blanco Flotante -->
+  <div class="noticia-main-container">
+    <!-- Contenido de la noticia -->
+    <div class="noticia-body">
+      <%- noticia.contenido %>
+    </div>
+
+    <!-- Sección de Compartir -->
+    <div class="share-section">
+      <h3>📤 Compartir en redes sociales</h3>
+      <div class="share-buttons">
+        <a href="https://wa.me/?text=<%= encodeURIComponent(noticia.titulo) %>%20https://davidhendersonggrupo.com/noticias/<%= noticia.id %>" 
+           target="_blank" class="share-btn share-whatsapp" title="Compartir en WhatsApp">
+          <span>💬</span> WhatsApp
+        </a>
+        
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://davidhendersonggrupo.com/noticias/<%= noticia.id %>" 
+           target="_blank" class="share-btn share-linkedin" title="Compartir en LinkedIn">
+          <span>in</span> LinkedIn
+        </a>
+        
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://davidhendersonggrupo.com/noticias/<%= noticia.id %>" 
+           target="_blank" class="share-btn share-facebook" title="Compartir en Facebook">
+          <span>f</span> Facebook
+        </a>
+        
+        <a href="https://twitter.com/intent/tweet?text=<%= encodeURIComponent(noticia.titulo) %>&url=https://davidhendersonggrupo.com/noticias/<%= noticia.id %>" 
+           target="_blank" class="share-btn share-twitter" title="Compartir en Twitter/X">
+          <span>𝕏</span> Twitter
+        </a>
+        
+        <a href="mailto:?subject=<%= encodeURIComponent(noticia.titulo) %>&body=<%= encodeURIComponent(noticia.titulo + ' - https://davidhendersonggrupo.com/noticias/' + noticia.id) %>" 
+           class="share-btn share-email" title="Compartir por email">
+          <span>✉️</span> Email
+        </a>
+      </div>
+    </div>
+
+    <!-- Botón volver -->
+    <a href="/noticias" class="back-link">← Volver a Noticias</a>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

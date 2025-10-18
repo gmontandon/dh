@@ -1,0 +1,200 @@
+<%- include('partials/header') %>
+
+<style>
+  .contacto-header {
+    text-align: left;
+    margin-bottom: 3rem;
+    padding-top: 50px;
+  }
+  .contacto-header h1 {
+    font-size: 48px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #1a1a1a;
+    text-align: left;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .contacto-header p {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin-bottom: 20px;
+    max-width: 600px;
+    white-space: normal;
+    word-break: break-words;
+  }
+
+  p.contacto-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+</style>
+
+<main class="container" style="padding-top: 110px; padding-bottom: 48px;">
+  <div class="contacto-header">
+    <h1>Contacto</h1>
+    <p class="contacto-subtitle">Estamos aquí para ayudarte. Ponte en contacto con nosotros</p>
+  </div>
+
+  <section style="width: 100%; max-width: 900px; margin: 0 auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid #e0e0e0; display: flex; flex-direction: row; gap: 0; align-items: stretch; overflow: hidden;">
+    <!-- Formulario -->
+    <div style="flex: 1 1 340px; min-width: 260px; padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: center; background: #fff;">
+      <form id="contactForm" style="width: 100%; margin-bottom: 1rem;">
+        <div style="margin-bottom: 1rem;">
+          <label for="nombre" style="display: block; color: rgb(18, 21, 32); font-weight: 600; margin-bottom: 0.5rem;">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 0.7rem; border: 1px solid #cfd8dc; border-radius: 6px; font-size: 1.05rem; background: #f7fafc;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label for="email" style="display: block; color: rgb(18, 21, 32); font-weight: 600; margin-bottom: 0.5rem;">Email</label>
+          <input type="email" id="email" name="email" required style="width: 100%; padding: 0.7rem; border: 1px solid #cfd8dc; border-radius: 6px; font-size: 1.05rem; background: #f7fafc;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label for="telefono" style="display: block; color: rgb(18, 21, 32); font-weight: 600; margin-bottom: 0.5rem;">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" style="width: 100%; padding: 0.7rem; border: 1px solid #cfd8dc; border-radius: 6px; font-size: 1.05rem; background: #f7fafc;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label for="mensaje" style="display: block; color: rgb(18, 21, 32); font-weight: 600; margin-bottom: 0.5rem;">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" required rows="3" style="width: 100%; padding: 0.7rem; border: 1px solid #cfd8dc; border-radius: 6px; font-size: 1.05rem; background: #f7fafc; resize: vertical;"></textarea>
+        </div>
+        <button type="submit" style="padding: 0.7rem 1.5rem; background: rgb(18, 21, 32); color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 1.08rem; cursor: pointer;">Enviar</button>
+      </form>
+      <div id="mensaje-resultado" style="display: none; margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;"></div>
+    </div>
+    <!-- Info + mapa -->
+    <div style="flex: 1 1 340px; min-width: 260px; background: #f7fafc; color: #222; border-left: 1px solid #e0e0e0; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+      <h2 style="font-size: 1.08rem; font-weight: 700; margin-bottom: 0.5rem; color: rgb(18, 21, 32);">Información de contacto</h2>
+      <p style="margin-bottom: 0.3rem; color: #555;">Dirección: <span style="color: rgb(18, 21, 32);">Fray Bentos, Río Negro, Uruguay</span></p>
+      <p style="margin-bottom: 0.3rem; color: #555;">Teléfono: <a href="tel:+59812345678" style="color: rgb(18, 21, 32); text-decoration: underline;">+598 1234 5678</a></p>
+      <p style="margin-bottom: 0.3rem; color: #555;">Email: <a href="mailto:info@henderson.com.uy" style="color: rgb(18, 21, 32); text-decoration: underline;">info@henderson.com.uy</a></p>
+      <div style="margin-top: 1.2rem; font-size: 0.98rem; font-weight: 500; color: #222;">Horario: Lunes a viernes de 8:30 a 18:00.</div>
+      <div id="estado-horario" style="margin-top: 0.5rem; font-size: 0.85rem;"></div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1045.0!2d-58.288052!3d-33.115942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a54de4c53a7673%3Ad4875d3aa5e8d08f!2sHenderson%20Forestal!5e0!3m2!1ses-ES!2suy!4v1697560000000!5m2!1ses-ES!2suy"
+        width="100%" height="160" style="border:0; filter: grayscale(0.7) brightness(0.7); min-height: 160px; height: 160px; display: block; border-radius: 8px; margin-top: 1.2rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <script>
+        // Horarios por día (0=domingo, 1=lunes...)
+        const horarios = [
+          { dia: 'domingo', abierto: false, desde: '', hasta: '' },
+          { dia: 'lunes', abierto: true, desde: '8:30', hasta: '18:00' },
+          { dia: 'martes', abierto: true, desde: '8:30', hasta: '18:00' },
+          { dia: 'miércoles', abierto: true, desde: '8:30', hasta: '18:00' },
+          { dia: 'jueves', abierto: true, desde: '8:30', hasta: '18:00' },
+          { dia: 'viernes', abierto: true, desde: '8:30', hasta: '18:00' },
+          { dia: 'sábado', abierto: false, desde: '', hasta: '' }
+        ];
+        function minutos(horaStr) {
+          const [h, m] = horaStr.split(':');
+          return parseInt(h,10)*60 + parseInt(m,10);
+        }
+        function horaActualEnMinutos() {
+          const ahora = new Date();
+          return ahora.getHours() * 60 + ahora.getMinutes();
+        }
+        function proximoApertura(hoyIdx, ahoraMin) {
+          for (let i = 1; i <= 7; i++) {
+            const idx = (hoyIdx + i) % 7;
+            const info = horarios[idx];
+            if (info.abierto) {
+              return `${info.dia.charAt(0).toUpperCase()+info.dia.slice(1)} a las ${info.desde} a.m.`;
+            }
+          }
+          return null;
+        }
+        function mostrarEstadoHorario() {
+          const hoy = new Date().getDay();
+          const info = horarios[hoy];
+          let abiertoAhora = false;
+          let texto = '';
+          if (info.abierto) {
+            const desdeMin = minutos(info.desde);
+            const hastaMin = minutos(info.hasta);
+            const ahoraMin = horaActualEnMinutos();
+            abiertoAhora = ahoraMin >= desdeMin && ahoraMin < hastaMin;
+            if (abiertoAhora) {
+              texto = `<span style='color:#28a745;font-weight:700;'>Abierto ahora</span>`;
+            } else if (ahoraMin < desdeMin) {
+              texto = `<span style='color:#dc3545;font-weight:700;'>Cerrado ahora</span> · Abre hoy a las ${info.desde} a.m.`;
+            } else {
+              // Buscar próximo día abierto
+              const prox = proximoApertura(hoy, ahoraMin);
+              texto = `<span style='color:#dc3545;font-weight:700;'>Cerrado ahora</span> · Abre ${prox}`;
+            }
+          } else {
+            // Buscar próximo día abierto
+            const prox = proximoApertura(hoy, 0);
+            texto = `<span style='color:#dc3545;font-weight:700;'>Cerrado ahora</span> · Abre ${prox}`;
+          }
+          document.getElementById('estado-horario').innerHTML = texto;
+        }
+        mostrarEstadoHorario();
+      </script>
+      <!-- Íconos de redes sociales alineados y centrados -->
+      <div style="margin-top: 2.2rem; display: flex; justify-content: center; gap: 2rem; align-items: center; width: 100%;">
+        <a href="https://www.linkedin.com/company/" target="_blank" rel="noopener">
+          <img src="/img/linkedin.svg" alt="LinkedIn" style="height: 28px; filter: grayscale(1); opacity: 0.7; transition: opacity 0.2s;">
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+          <img src="/img/facebook.svg" alt="Facebook" style="height: 28px; filter: grayscale(1); opacity: 0.7; transition: opacity 0.2s;">
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+          <img src="/img/instagram.svg" alt="Instagram" style="height: 28px; filter: grayscale(1); opacity: 0.7; transition: opacity 0.2s;">
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    nombre: document.getElementById('nombre').value,
+    email: document.getElementById('email').value,
+    telefono: document.getElementById('telefono').value,
+    mensaje: document.getElementById('mensaje').value
+  };
+  
+  try {
+    const response = await fetch('/api/contacto', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    const data = await response.json();
+    const mensajeDiv = document.getElementById('mensaje-resultado');
+    
+    if (data.success) {
+      mensajeDiv.style.display = 'block';
+      mensajeDiv.style.background = '#d4edda';
+      mensajeDiv.style.color = '#155724';
+      mensajeDiv.textContent = 'Mensaje enviado correctamente. Nos pondremos en contacto pronto.';
+      document.getElementById('contactForm').reset();
+    } else {
+      mensajeDiv.style.display = 'block';
+      mensajeDiv.style.background = '#f8d7da';
+      mensajeDiv.style.color = '#721c24';
+      mensajeDiv.textContent = 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.';
+    }
+  } catch (error) {
+    const mensajeDiv = document.getElementById('mensaje-resultado');
+    mensajeDiv.style.display = 'block';
+    mensajeDiv.style.background = '#f8d7da';
+    mensajeDiv.style.color = '#721c24';
+    mensajeDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo más tarde.';
+  }
+});
+</script>
+
+<%- include('partials/banners', { banners: banners || [] }) %>
+
+<%- include('partials/footer') %>

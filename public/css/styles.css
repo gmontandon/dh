@@ -1,0 +1,433 @@
+/* Tipografía mejorada y variables globales */
+:root {
+  --font-family-base: Helvetica, Arial, sans-serif;
+  --font-body: "Mona Sans", "Noto Sans", var(--font-family-base);
+  --font-heading: var(--font-body);
+  --font-body-bold: var(--font-body);
+  --font-family-secondary-base: Georgia, serif;
+  --font-body-secondary: "Noto Serif", var(--font-family-secondary-base);
+  --typo-weight-lighter: 300;
+  --typo-weight-normal: 400;
+  --typo-weight-bold: 600;
+  --typo-weight-bolder: 700;
+  --typo-letter-spacing: normal;
+  --typo-h1-size: clamp(2.25rem, 5vw, 3rem);
+  --typo-h1-line-height: clamp(3rem, 5vw, 4rem);
+  --typo-h1-weight: var(--typo-weight-bold);
+  --typo-h2-size: clamp(1.75rem, 5vw, 2rem);
+  --typo-h2-line-height: clamp(2.5rem, 5vw, 3rem);
+  --typo-h2-weight: var(--typo-weight-bold);
+  --typo-h3-size: 1.5rem;
+  --typo-h3-line-height: 1.75rem;
+  --typo-h3-weight: var(--typo-weight-bold);
+  --typo-body-size: 1rem;
+  --typo-body-line-height: 1.5rem;
+  --typo-body-weight: var(--typo-weight-normal);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #fff;
+  color: #222;
+  line-height: var(--typo-body-line-height);
+  font-size: var(--typo-body-size);
+  font-weight: var(--typo-body-weight);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-size: var(--typo-h1-size);
+  line-height: var(--typo-h1-line-height);
+  font-weight: var(--typo-h1-weight);
+  letter-spacing: var(--typo-letter-spacing);
+  color: #222;
+}
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-size: var(--typo-h2-size);
+  line-height: var(--typo-h2-line-height);
+  font-weight: var(--typo-h2-weight);
+  letter-spacing: var(--typo-letter-spacing);
+  color: #222;
+}
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-size: var(--typo-h3-size);
+  line-height: var(--typo-h3-line-height);
+  font-weight: var(--typo-h3-weight);
+  letter-spacing: var(--typo-letter-spacing);
+  color: #222;
+}
+h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--typo-weight-bold);
+  color: #222;
+}
+/* Eliminar borde de los enlaces del menú principal */
+p, li, input, textarea, button, a {
+  font-family: var(--font-body);
+  font-size: var(--typo-body-size);
+  line-height: var(--typo-body-line-height);
+  border: 0 !important;
+  outline: none !important;
+}
+strong, b {
+  font-weight: var(--typo-weight-bolder);
+}
+
+/* Estilos de utilidad */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Botones */
+button, .btn {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Enlaces */
+a {
+  color: rgb(18, 21, 32);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1D5F3F;
+}
+
+/* Inputs y formularios */
+input, textarea {
+  font-family: var(--font-body);
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid rgb(18, 21, 32);
+  outline-offset: 2px;
+}
+
+/* === ESTILOS PANEL DE ADMINISTRACIÓN === */
+
+/* Sección Admin */
+.admin-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 3rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Botones */
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: rgb(18, 21, 32);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #0f3220;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  color: rgb(18, 21, 32);
+  border: 2px solid rgb(18, 21, 32);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background: rgb(18, 21, 32);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  padding: 0.5rem 1rem;
+  background: #0A66C2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-edit:hover {
+  background: #084a8f;
+}
+
+.btn-delete {
+  padding: 0.5rem 1rem;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}
+
+.btn-view {
+  padding: 0.5rem 1rem;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.btn-view:hover {
+  background: #218838;
+  color: #fff;
+}
+
+/* Contenido Admin */
+.admin-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+/* Formulario Admin */
+.admin-form {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.admin-form h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgb(18, 21, 32);
+  outline: none;
+}
+
+.form-group small {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Lista Admin */
+.admin-list h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+#servicios-list,
+#listaNoticias {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.item-card {
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+}
+
+.item-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.item-content h3 {
+  color: rgb(18, 21, 32);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.item-descripcion {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.item-caracteristicas {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.item-caracteristicas strong {
+  color: rgb(18, 21, 32);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.item-caracteristicas ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.item-caracteristicas li {
+  padding: 0.25rem 0;
+  color: #555;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.item-caracteristicas li:before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: rgb(18, 21, 32);
+  font-weight: bold;
+}
+
+.item-fecha {
+  color: #888;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.item-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.no-items {
+  text-align: center;
+  color: #888;
+  padding: 3rem 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-section {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-form,
+  .admin-list {
+    padding: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .item-actions {
+    flex-direction: column;
+  }
+
+  .item-actions button,
+  .item-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}

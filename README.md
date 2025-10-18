@@ -105,7 +105,3 @@ El servidor estará disponible en: `http://localhost:3000`
 - Agregar imágenes a las noticias
 - Mejorar diseño responsive
 - Agregar más secciones según necesidad
-
-## Licencia
-
-ISC - David Henderson Grupo © 2025
